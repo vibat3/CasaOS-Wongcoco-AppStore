@@ -1,0 +1,48 @@
+name: wapi
+services:
+  app:
+    cpu_shares: 90
+    command: []
+    container_name: wapi
+    deploy:
+      resources:
+        limits:
+          memory: 3916M
+    environment:
+      - API_KEY=DEADC6C455F90EE26270A2F0A92BBD
+      - BASE_WEBHOOK_URL=http://192.168.101.244:8080/webhook/wa.php
+      - DISABLED_CALLBACKS=message_ack|message_reaction
+      - ENABLE_LOCAL_CALLBACK_EXAMPLE=TRUE
+      - ENABLE_SWAGGER_ENDPOINT=TRUE
+      - MAX_ATTACHMENT_SIZE=5000000
+      - RECOVER_SESSIONS=TRUE
+      - SET_MESSAGES_AS_SEEN=FALSE
+    hostname: wapi
+    image: chrishubert/whatsapp-web-api:latest
+    labels:
+      icon: https://cdn4.iconfinder.com/data/icons/miu-square-flat-social/60/whatsapp-square-social-media-512.png
+    ports:
+      - target: 3000
+        published: "3080"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/whatsapp
+        target: /usr/src/app/sessions
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://cdn4.iconfinder.com/data/icons/miu-square-flat-social/60/whatsapp-square-social-media-512.png
+  index: /
+  is_uncontrolled: false
+  port_map: ""
+  scheme: http
+  store_app_id: wapi
+  title:
+    custom: Whatsapp API

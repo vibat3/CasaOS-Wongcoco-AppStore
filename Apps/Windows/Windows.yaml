@@ -1,0 +1,48 @@
+name: vibrant_owen
+services:
+  windows:
+    cap_add:
+      - NET_ADMIN
+    cpu_shares: 90
+    command: []
+    container_name: windows
+    deploy:
+      resources:
+        limits:
+          memory: 3916M
+    devices:
+      - /dev/kvm:/dev/kvm
+    environment:
+      - CPU_CORES=2
+      - DISK_SIZE=50G
+      - RAM_SIZE=2G
+    hostname: windows
+    image: dockurr/windows:latest
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxvMZsHy8JPofeyE4II0EID6NxET1KdWmxMg&s
+    ports:
+      - target: 8006
+        published: "8006"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/windows/storage
+        target: /storage
+      - type: bind
+        source: /DATA/iso/Win10 tiny 23h1 x64.iso
+        target: /custom.iso
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxvMZsHy8JPofeyE4II0EID6NxET1KdWmxMg&s
+  index: /
+  is_uncontrolled: false
+  port_map: "8006"
+  scheme: http
+  store_app_id: vibrant_owen
+  title:
+    custom: Windows

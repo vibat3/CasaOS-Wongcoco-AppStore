@@ -1,0 +1,38 @@
+name: jovial_armin
+services:
+  gettds:
+    cpu_shares: 90
+    command: []
+    container_name: GetTDS
+    deploy:
+      resources:
+        limits:
+          memory: 3916M
+    environment:
+      - TZ=Asia/Jakarta
+    hostname: GetTDS
+    image: 192.168.101.244:5000/gettds
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcMqvD1-DyczHm1VRPJl2jFVxnwUVJnHU2lA&s
+    restart: always
+    volumes:
+      - type: bind
+        source: /DATA/tds_logs
+        target: /apps/data/logs
+    ports: []
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcMqvD1-DyczHm1VRPJl2jFVxnwUVJnHU2lA&s
+  index: /
+  is_uncontrolled: false
+  port_map: ""
+  scheme: http
+  store_app_id: jovial_armin
+  title:
+    custom: TDS API

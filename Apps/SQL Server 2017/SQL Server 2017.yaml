@@ -1,0 +1,50 @@
+name: successful_maxime
+services:
+  sqlsrv:
+    cpu_shares: 90
+    command: []
+    container_name: sqlsrv
+    deploy:
+      resources:
+        limits:
+          memory: 3916M
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_AGENT_ENABLED=true
+      - MSSQL_PID=Enterprise
+      - PGID=1000
+      - PUID=1000
+      - SA_PASSWORD=Laws0n123
+      - TZ=Asia/Jakarta
+    hostname: sqlsrv
+    image: 192.168.101.244:5000/sqlsrv2017:ubuntu
+    labels:
+      icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJmlyShkKpnIFm2g7JInm725wfCzEFJqsa0w&s
+    ports:
+      - target: 1433
+        published: "1433"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/mssql/data
+        target: /var/opt/mssql/data
+      - type: bind
+        source: /DATA/AppData/mssql/backup
+        target: /backup
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJmlyShkKpnIFm2g7JInm725wfCzEFJqsa0w&s
+  index: /
+  is_uncontrolled: false
+  port_map: ""
+  scheme: http
+  store_app_id: successful_maxime
+  title:
+    custom: SQL Server 2017

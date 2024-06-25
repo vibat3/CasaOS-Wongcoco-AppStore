@@ -1,0 +1,47 @@
+name: compassionate_andres
+services:
+  portainer:
+    cpu_shares: 90
+    command: []
+    container_name: portainer
+    deploy:
+      resources:
+        limits:
+          memory: 3916M
+    environment:
+      - TZ=Asia/Jakarta
+    hostname: portainer
+    image: portainer/portainer-ce:latest
+    labels:
+      icon: https://repository-images.githubusercontent.com/725794693/3b812728-09ec-4db5-b03b-b9f48cc439e3
+    ports:
+      - target: 9000
+        published: "9000"
+        protocol: tcp
+      - target: 9443
+        published: "9443"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
+        source: /DATA/AppData/docker/data
+        target: /data
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://repository-images.githubusercontent.com/725794693/3b812728-09ec-4db5-b03b-b9f48cc439e3
+  index: /
+  is_uncontrolled: false
+  port_map: "9000"
+  scheme: http
+  store_app_id: compassionate_andres
+  title:
+    custom: Portainer
