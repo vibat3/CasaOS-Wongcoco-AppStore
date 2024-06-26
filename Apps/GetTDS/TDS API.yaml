@@ -33,6 +33,6 @@ x-casaos:
   is_uncontrolled: false
   port_map: ""
   scheme: http
-  store_app_id: jovial_armin
+  store_app_id: vibate
   title:
     custom: TDS API
