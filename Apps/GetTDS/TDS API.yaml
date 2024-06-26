@@ -1,4 +1,4 @@
-name: jovial_armin
+name: vian_gettds
 services:
   gettds:
     cpu_shares: 90
@@ -25,14 +25,17 @@ services:
     network_mode: bridge
     privileged: false
 x-casaos:
-  author: self
-  category: self
-  hostname: ""
+  architectures:
+    - amd64
+  main: app
+  description:
+    en_us: GetTDS is a free software tool written in Delphi (pascal), intended to handle the API over the TDS Web. GetTDS supports a wide range of operations on SQL Server.
+  tagline:
+    en_us: A free software tool written in Delphi (pascal), intended to handle the API over the TDS Web. GetTDS supports a wide range of operations on SQL Server.
+  developer: Vian
+  author: VianWatulingas
   icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcMqvD1-DyczHm1VRPJl2jFVxnwUVJnHU2lA&s
-  index: /
-  is_uncontrolled: false
-  port_map: ""
-  scheme: http
-  store_app_id: vibate
   title:
-    custom: TDS API
+    en_us: GetTDS
+  category: Vian
+  port_map: '80'
